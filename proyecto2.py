@@ -78,6 +78,7 @@ class BotonAmarillo(Button):
         self.on = False
 
     def on_press(self):
+        print("PRESIONAR")
         if self.on:
             self.on = False
             self.background_normal = 'imagenes/ledGRIS.png'
