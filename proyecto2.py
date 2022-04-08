@@ -82,11 +82,13 @@ class BotonAmarillo(Button):
             self.on = False
             self.background_normal = 'imagenes/ledGRIS.png'
             data = {'data': 'off'}
+            print("PULSO Y ESTA OFF")
 
         else:
             self.on = True
             self.background_normal = 'imagenes/ledAMARILLO.png'
             data = {'data': 'on'}
+            print("PULSO Y ESTA OFF")
 
         x = requests.post(url + '/raspberryAMARILLO',
                               data=json.dumps(data),
@@ -325,7 +327,7 @@ btn2 = Button()
 btn2.text = 'IR A PANTALLA 2'
 btn2.size_hint = (.5,.1)
 btn2.pos_hint = {'x': .5, 'y': .9}
-btn2.bind(on_press=lambda x: cambiarPantalla('screen2') )
+btn2.bind(on_press=lambda x: cambiarPantalla('screen2'))
 
 sm.size_hint = (1,.9)
 sm.pos_hint = {'x': 0, 'y': 0}
