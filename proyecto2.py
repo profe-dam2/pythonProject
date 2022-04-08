@@ -77,25 +77,32 @@ class BotonAmarillo(Button):
         self.pos_hint = {'center_x': .5, 'center_y': .5}
         self.on = False
 
-    def on_release(self):
+    def on_press(self):
         print("PRESIONAR")
         if self.on:
             self.on = False
             self.background_normal = 'imagenes/ledGRIS.png'
             data = {'data': 'off'}
             print("PULSO Y ESTA OFF")
+            x = requests.post(url + '/raspberryAMARILLO',
+                              data=json.dumps(data),
+                              headers={"Content-Type": "application/json"})
+
+            print(x)
 
         else:
             self.on = True
             self.background_normal = 'imagenes/ledAMARILLO.png'
             data = {'data': 'on'}
             print("PULSO Y ESTA ON")
-
-        x = requests.post(url + '/raspberryAMARILLO',
+            #sleep(1)
+            x = requests.post(url + '/raspberryAMARILLO',
                               data=json.dumps(data),
                               headers={"Content-Type": "application/json"})
-        print(x)
-        sleep(1)
+
+
+            print(x)
+
 
 class BotonVerde(Button):
     def __init__(self, **kwargs):
