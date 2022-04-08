@@ -84,24 +84,18 @@ class BotonAmarillo(Button):
             self.background_normal = 'imagenes/ledGRIS.png'
             data = {'data': 'off'}
             print("PULSO Y ESTA OFF")
-            x = requests.post(url + '/raspberryAMARILLO',
-                              data=json.dumps(data),
-                              headers={"Content-Type": "application/json"})
-
-            print(x)
-
+            sleep(1)
         else:
             self.on = True
             self.background_normal = 'imagenes/ledAMARILLO.png'
             data = {'data': 'on'}
             print("PULSO Y ESTA ON")
-            #sleep(1)
-            x = requests.post(url + '/raspberryAMARILLO',
+            sleep(2)
+
+        x = requests.post(url + '/raspberryAMARILLO',
                               data=json.dumps(data),
                               headers={"Content-Type": "application/json"})
-
-
-            print(x)
+        print(x)
 
 
 class BotonVerde(Button):
