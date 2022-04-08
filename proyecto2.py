@@ -193,7 +193,7 @@ class Screen1(Screen):
 
         self.add_widget(fondo)
         self.add_widget(etiqueta)
-        self.add_widget(btnLed)
+        #self.add_widget(btnLed)
         #self.add_widget(s)
 
         self.add_widget(btnUPServo1)
