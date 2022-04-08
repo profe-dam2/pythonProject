@@ -88,13 +88,13 @@ class BotonAmarillo(Button):
             self.on = True
             self.background_normal = 'imagenes/ledAMARILLO.png'
             data = {'data': 'on'}
-            print("PULSO Y ESTA OFF")
+            print("PULSO Y ESTA ON")
 
         x = requests.post(url + '/raspberryAMARILLO',
                               data=json.dumps(data),
                               headers={"Content-Type": "application/json"})
         print(x)
-        sleep(.5)
+        sleep(1)
 
 class BotonVerde(Button):
     def __init__(self, **kwargs):
