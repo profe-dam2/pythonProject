@@ -40,6 +40,29 @@ class Boton(Button):
             self.on = True
             self.background_normal = 'imagenes/ledON.png'
 
+class BotonDISCO(Button):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.background_normal = 'imagenes/disco.gif'
+        self.background_down = 'imagenes/disco.gif'
+        self.border = (0, 0, 0, 0)
+        self.size_hint = (.1, .2)
+        self.pos_hint = {'center_x': .25, 'center_y': .75}
+        self.on = False
+
+    def on_press(self):
+
+        data = {'data': 'DISCO'}
+        x = requests.post(url + '/raspberryDISCO',
+                              data=json.dumps(data),
+                              headers={"Content-Type": "application/json"})
+        print(x)
+
+
+
+
+
+
 class BotonRojo(Button):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -84,13 +107,13 @@ class BotonAmarillo(Button):
             self.background_normal = 'imagenes/ledGRIS.png'
             data = {'data': 'off'}
             print("PULSO Y ESTA OFF")
-            sleep(1)
+            #sleep(1)
         else:
             self.on = True
             self.background_normal = 'imagenes/ledAMARILLO.png'
             data = {'data': 'on'}
             print("PULSO Y ESTA ON")
-            sleep(2)
+            #sleep(2)
 
         x = requests.post(url + '/raspberryAMARILLO',
                               data=json.dumps(data),
