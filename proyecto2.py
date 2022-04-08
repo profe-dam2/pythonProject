@@ -77,7 +77,7 @@ class BotonAmarillo(Button):
         self.pos_hint = {'center_x': .5, 'center_y': .5}
         self.on = False
 
-    def on_press(self):
+    def on_release(self):
         print("PRESIONAR")
         if self.on:
             self.on = False
