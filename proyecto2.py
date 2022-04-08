@@ -1,4 +1,5 @@
 import json
+from time import sleep
 
 import requests
 from kivy.app import App
@@ -49,7 +50,7 @@ class BotonRojo(Button):
         self.pos_hint = {'center_x': .25, 'center_y': .5}
         self.on = False
 
-    def on_touch_down(self, touch):
+    def on_press(self):
         if self.on:
             self.on = False
             self.background_normal = 'imagenes/ledGRIS.png'
@@ -64,6 +65,7 @@ class BotonRojo(Button):
                               data=json.dumps(data),
                               headers={"Content-Type": "application/json"})
         print(x)
+        sleep(.5)
 
 class BotonAmarillo(Button):
     def __init__(self, **kwargs):
@@ -75,7 +77,7 @@ class BotonAmarillo(Button):
         self.pos_hint = {'center_x': .5, 'center_y': .5}
         self.on = False
 
-    def on_touch_down(self, touch):
+    def on_press(self):
         if self.on:
             self.on = False
             self.background_normal = 'imagenes/ledGRIS.png'
@@ -90,6 +92,7 @@ class BotonAmarillo(Button):
                               data=json.dumps(data),
                               headers={"Content-Type": "application/json"})
         print(x)
+        sleep(.5)
 
 class BotonVerde(Button):
     def __init__(self, **kwargs):
@@ -101,7 +104,7 @@ class BotonVerde(Button):
         self.pos_hint = {'center_x': .75, 'center_y': .5}
         self.on = False
 
-    def on_touch_down(self, touch):
+    def on_press(self):
         if self.on:
             self.on = False
             self.background_normal = 'imagenes/ledGRIS.png'
@@ -115,6 +118,7 @@ class BotonVerde(Button):
         x = requests.post(url + '/raspberryVERDE', data=json.dumps(data),
                           headers={"Content-Type": "application/json"})
         print(x)
+        sleep(.5)
 
 class Screen1(Screen):
     def __init__(self,**kw):
