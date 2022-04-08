@@ -27,7 +27,7 @@ class Boton(Button):
         self.pos_hint = {'center_x': .5, 'center_y': .5}
         self.on = True
 
-    def on_press(self):
+    def on_touch_down(self, touch):
         if self.on:
             self.on = False
             self.background_normal = 'imagenes/ledOFF.png'
@@ -49,7 +49,7 @@ class BotonRojo(Button):
         self.pos_hint = {'center_x': .25, 'center_y': .5}
         self.on = False
 
-    def on_press(self):
+    def on_touch_down(self, touch):
         if self.on:
             self.on = False
             self.background_normal = 'imagenes/ledGRIS.png'
@@ -75,7 +75,7 @@ class BotonAmarillo(Button):
         self.pos_hint = {'center_x': .5, 'center_y': .5}
         self.on = False
 
-    def on_press(self):
+    def on_touch_down(self, touch):
         if self.on:
             self.on = False
             self.background_normal = 'imagenes/ledGRIS.png'
@@ -101,7 +101,7 @@ class BotonVerde(Button):
         self.pos_hint = {'center_x': .75, 'center_y': .5}
         self.on = False
 
-    def on_press(self):
+    def on_touch_down(self, touch):
         if self.on:
             self.on = False
             self.background_normal = 'imagenes/ledGRIS.png'
