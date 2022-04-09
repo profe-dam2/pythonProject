@@ -46,7 +46,7 @@ class ControlGrua(object):
     def tareaMoverCarro(self, direccion):
         global carroOn
         #button_state = GPIO.input(18)
-        while (carroON):
-            print(GPIO.input(18))
+        while (carroON or GPIO.input(18)):
+            print()
             #button_state = GPIO.input(18)
             self.amspi.run_dc_motor(self.amspi.DC_Motor_3, clockwise=direccion)
