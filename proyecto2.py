@@ -43,12 +43,15 @@ class Boton(Button):
 class BotonDISCO(Button):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.background_normal = 'imagenes/disco.gif'
-        self.background_down = 'imagenes/disco.gif'
+        self.background_normal = None
+        #self.background_down = 'imagenes/disco.gif'
         self.border = (0, 0, 0, 0)
         self.size_hint = (.1, .2)
         self.pos_hint = {'center_x': .25, 'center_y': .75}
         self.on = False
+        img = Image(source='imagenes/disco.gif',anim_delay=0.1)
+        self.add_widget(img)
+
 
     def on_press(self):
 
@@ -237,6 +240,7 @@ class Screen1(Screen):
         self.add_widget(btnDOWNServo3)
         #self.add_widget(txt)
 
+       #self.add_widget(BotonDISCO())
 
     def cambiarAngulo(self,angulo):
         angle = {'data': angulo}
