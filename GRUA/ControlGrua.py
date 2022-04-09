@@ -11,7 +11,7 @@ class ControlGrua(object):
     def __init__(self):
         self.amspi = AMSpi()
         global carroON
-        GPIO.setmode(GPIO.BCM)
+        #GPIO.setmode(GPIO.BCM)
         GPIO.setup (18, GPIO.IN, pull_up_down = GPIO.PUD_UP)
         # Set PINs for controlling shift register (GPIO numbering)
         self.amspi.set_74HC595_pins(21, 20, 16)
@@ -47,5 +47,6 @@ class ControlGrua(object):
         global carroOn
         #button_state = GPIO.input(18)
         while (carroON):
+            print(GPIO.input(18))
             #button_state = GPIO.input(18)
             self.amspi.run_dc_motor(self.amspi.DC_Motor_3, clockwise=direccion)

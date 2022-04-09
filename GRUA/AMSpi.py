@@ -63,6 +63,7 @@ class AMSpi:
             print("PIN numbering: BOARD")
         else:
             GPIO.setmode(GPIO.BCM)
+
             print("PIN numbering: BCM")
 
     def __enter__(self):
