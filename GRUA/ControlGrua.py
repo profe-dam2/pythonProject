@@ -43,4 +43,4 @@ class ControlGrua(object):
     def tareaMoverCarro(self, direccion):
         global carroOn
         while (carroON):
-            self.amspi.run_dc_motor(self.amspi.DC_Motor_3, clockwise=direccion)
+            self.amspi.run_dc_motor(self.amspi.DC_Motor_3, clockwise=direccion, speed = 50)
