@@ -12,7 +12,7 @@ class ControlGrua(object):
         self.amspi = AMSpi()
         global carroON
         #GPIO.setmode(GPIO.BCM)
-        #GPIO.setup (18, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+        GPIO.setup (18, GPIO.IN, pull_up_down = GPIO.PUD_UP)
         # Set PINs for controlling shift register (GPIO numbering)
         self.amspi.set_74HC595_pins(21, 20, 16)
         # Set PINs for controlling all 4 motors (GPIO numbering)
