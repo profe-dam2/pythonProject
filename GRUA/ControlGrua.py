@@ -3,26 +3,29 @@
 from AMSpi import AMSpi
 from threading import Thread
 
+global carroON
 
 class ControlGrua(object):
     def __init__(self):
         self.amspi = AMSpi()
-
+        global carroON
 
         # Set PINs for controlling shift register (GPIO numbering)
         self.amspi.set_74HC595_pins(21, 20, 16)
         # Set PINs for controlling all 4 motors (GPIO numbering)
         self.amspi.set_L293D_pins(5, 6, 13, 19)
 
-        self.carroON = False
+        carroON = False
+
 
     def moverCarroGrua(self, direccion):
+        global carroON
         if direccion != None:
             print(direccion)
-            if (self.carroON):
+            if (carroON):
                 self.amspi.stop_dc_motor(self.amspi.DC_Motor_4)
 
-            self.carroON = True
+            carroON = True
             thread = Thread(target=self.tareaMoverCarro, args=(direccion,))
             thread.start()
             print('aqui')
@@ -30,11 +33,13 @@ class ControlGrua(object):
             self.pararCarroGrua()
 
     def pararCarroGrua(self):
+        global carroON
         print('parar el carro')
         self.amspi.stop_dc_motor(self.amspi.DC_Motor_4)
-        self.carroON = False
+        carroON = False
 
     def tareaMoverCarro(self, direccion):
-        while (self.carroON):
-            print(self.carroON)
+        global carroOn
+        while (carroON):
+            print(carroON)
             self.amspi.run_dc_motor(self.amspi.DC_Motor_4, clockwise=direccion)
