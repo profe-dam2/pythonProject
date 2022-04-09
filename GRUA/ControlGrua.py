@@ -18,7 +18,7 @@ class ControlGrua(object):
 
     def moverCarroGrua(self, direccion):
         if direccion != None:
-            print('DISTINTO DE NONE')
+            print(direccion)
             if (self.carroON):
                 self.amspi.stop_dc_motor(self.amspi.DC_Motor_4)
 
