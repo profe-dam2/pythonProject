@@ -36,4 +36,5 @@ class ControlGrua(object):
 
     def tareaMoverCarro(self, direccion):
         while (self.carroON):
+            print(self.carroON)
             self.amspi.run_dc_motor(self.amspi.DC_Motor_4, clockwise=direccion)
