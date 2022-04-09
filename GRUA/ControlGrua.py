@@ -3,7 +3,6 @@
 from AMSpi import AMSpi
 from threading import Thread
 from time import sleep
-
 global carroON
 
 class ControlGrua(object):
@@ -24,7 +23,7 @@ class ControlGrua(object):
         if direccion != None:
             print(direccion)
             if (carroON):
-                self.amspi.stop_dc_motor(self.amspi.DC_Motor_4)
+                self.amspi.stop_dc_motor(self.amspi.DC_Motor_3)
 
             carroON = True
             thread = Thread(target=self.tareaMoverCarro, args=(direccion,))
@@ -36,12 +35,12 @@ class ControlGrua(object):
     def pararCarroGrua(self):
         global carroON
         print('parar el carro')
-        self.amspi.stop_dc_motor(self.amspi.DC_Motor_4)
+        self.amspi.stop_dc_motor(self.amspi.DC_Motor_3)
         sleep(.2)
-        self.amspi.stop_dc_motor(self.amspi.DC_Motor_4)
+        self.amspi.stop_dc_motor(self.amspi.DC_Motor_3)
         carroON = False
 
     def tareaMoverCarro(self, direccion):
         global carroOn
         while (carroON):
-            self.amspi.run_dc_motor(self.amspi.DC_Motor_4, clockwise=direccion)
+            self.amspi.run_dc_motor(self.amspi.DC_Motor_3, clockwise=direccion)
