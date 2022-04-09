@@ -25,8 +25,7 @@ class ControlGrua(object):
             self.carroON = True
             thread = Thread(target=self.tareaMoverCarro, args=(direccion,))
             thread.start()
-            thread.join()
-
+            print('aqui')
         else:
             self.pararCarroGrua()
 
@@ -37,5 +36,4 @@ class ControlGrua(object):
 
     def tareaMoverCarro(self, direccion):
         while (self.carroON):
-            self.amspi.run_dc_motor(self.amspi.DC_Motor_4, clockwise=direccion,
-                                    speed=99)
+            self.amspi.run_dc_motor(self.amspi.DC_Motor_4, clockwise=direccion)

@@ -21,7 +21,7 @@ url = 'http://192.168.1.116:8071'
 class BotonRojo(Button):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.background_normal = 'imagenes/ledGRIS.png'
+        self.background_normal = 'imagenes/ledOFF.png'
         self.background_down = 'imagenes/ledGRIS.png'
         self.border = (0, 0, 0, 0)
         self.size_hint = (.1, .2)
@@ -41,7 +41,7 @@ class BotonRojo(Button):
 class BotonAmarillo(Button):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.background_normal = 'imagenes/ledGRIS.png'
+        self.background_normal = 'imagenes/ledAMARILLO.png'
         self.background_down = 'imagenes/ledGRIS.png'
         self.border = (0, 0, 0, 0)
         self.size_hint = (.1, .2)
@@ -60,7 +60,7 @@ class BotonAmarillo(Button):
 class BotonVerde(Button):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.background_normal = 'imagenes/ledGRIS.png'
+        self.background_normal = 'imagenes/ledON.png'
         self.background_down = 'imagenes/ledGRIS.png'
         self.border = (0, 0, 0, 0)
         self.size_hint = (.1, .2)
