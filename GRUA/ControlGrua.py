@@ -35,6 +35,7 @@ class ControlGrua(object):
             if (sensor):
                 c = c + 1
                 print("CONTADOR",c)
+                sleep(1)
 
 
     def moverCarroGrua(self, direccion):
