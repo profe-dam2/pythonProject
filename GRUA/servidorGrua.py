@@ -10,6 +10,11 @@ def carro():
     ControlGrua().moverCarroGrua(d)
     return {'response': 'moviendo carro grua'}
 
+@app.route('/ganchoGrua', methods=['POST'])
+def carro():
+    d = request.json['direccion']
+    ControlGrua().moverGanchoGrua(d)
+    return {'response': 'moviendo carro grua'}
 
 if __name__ == '__main__':
     ControlGrua()

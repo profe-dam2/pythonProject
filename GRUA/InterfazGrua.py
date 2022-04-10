@@ -170,7 +170,7 @@ class Screen2(Screen):
         self.add_widget(btnVERDE)
 
         self.add_widget(BotonGanchoAbajo())
-        self.add_widget(BotonGanchoAbajo())
+        self.add_widget(BotonGanchoArriba())
         self.add_widget(BotonGanchoParar())
 
 class Proyecto2App(App):
