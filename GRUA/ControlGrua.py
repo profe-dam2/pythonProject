@@ -5,8 +5,9 @@ from threading import Thread
 from time import sleep
 import RPi.GPIO as GPIO
 
-global carroON
 global ganchoON
+global carroON
+
 
 class ControlGrua(object):
     def __init__(self):
