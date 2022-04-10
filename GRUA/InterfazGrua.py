@@ -76,6 +76,66 @@ class BotonVerde(Button):
         print(x)
 
 
+class BotonGanchoAbajo(Button):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.background_normal = 'imagenes/ledOFF.png'
+        self.background_down = 'imagenes/ledGRIS.png'
+        self.border = (0, 0, 0, 0)
+        self.size_hint = (.1, .2)
+        self.pos_hint = {'center_x': .25, 'center_y': .75}
+        self.on = False
+
+    def on_press(self):
+
+        data = {'direccion': False}
+
+        x = requests.post(url + '/ganchoGrua',
+                              data=json.dumps(data),
+                              headers={"Content-Type": "application/json"})
+        print(x)
+
+
+class BotonGanchoArriba(Button):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.background_normal = 'imagenes/ledAMARILLO.png'
+        self.background_down = 'imagenes/ledGRIS.png'
+        self.border = (0, 0, 0, 0)
+        self.size_hint = (.1, .2)
+        self.pos_hint = {'center_x': .5, 'center_y': .75}
+        self.on = False
+
+    def on_press(self):
+        data = {'direccion': True}
+
+        x = requests.post(url + '/ganchoGrua',
+                          data=json.dumps(data),
+                          headers={"Content-Type": "application/json"})
+        print(x)
+
+
+class BotonGanchoParar(Button):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.background_normal = 'imagenes/ledON.png'
+        self.background_down = 'imagenes/ledGRIS.png'
+        self.border = (0, 0, 0, 0)
+        self.size_hint = (.1, .2)
+        self.pos_hint = {'center_x': .75, 'center_y': .75}
+        self.on = False
+
+    def on_press(self):
+        data = {'direccion': None}
+
+        x = requests.post(url + '/ganchoGrua',
+                          data=json.dumps(data),
+                          headers={"Content-Type": "application/json"})
+        print(x)
+
+
+
+
 
 class Screen2(Screen):
     def __init__(self, **kw):
@@ -109,7 +169,9 @@ class Screen2(Screen):
         self.add_widget(btnAMARILLO)
         self.add_widget(btnVERDE)
 
-
+        self.add_widget(BotonGanchoAbajo())
+        self.add_widget(BotonGanchoAbajo())
+        self.add_widget(BotonGanchoParar())
 
 class Proyecto2App(App):
     def build(self):

@@ -6,6 +6,7 @@ from time import sleep
 import RPi.GPIO as GPIO
 
 global carroON
+global ganchoON
 
 class ControlGrua(object):
     def __init__(self):
@@ -21,7 +22,7 @@ class ControlGrua(object):
 
         carroON = False
         print('INICIAL CONTROL GRUA')
-        self.prueba()
+        #self.prueba()
 
 
     def prueba(self):
@@ -60,3 +61,37 @@ class ControlGrua(object):
 
             button_state = GPIO.input(18)
             self.amspi.run_dc_motor(self.amspi.DC_Motor_3, clockwise=direccion)
+
+
+    ####################################################
+    ############GANCHO#################################
+
+    def moverCanchoGrua(self, direccion):
+        global ganchoON
+        if direccion != None:
+            print(direccion)
+            if (ganchoON):
+                self.amspi.stop_dc_motor(self.amspi.DC_Motor_2)
+
+            ganchoON = True
+            thread = Thread(target=self.tareaMoverGancho, args=(direccion,))
+            thread.start()
+            print('aqui')
+        else:
+            self.pararGanchoGrua()
+
+    def pararGanchoGrua(self):
+        global ganchoON
+        print('parar el gancho')
+        self.amspi.stop_dc_motor(self.amspi.DC_Motor_2)
+        sleep(.2)
+        self.amspi.stop_dc_motor(self.amspi.DC_Motor_2)
+        ganchoON = False
+
+    def tareaMoverGancho(self, direccion):
+        global ganchoON
+        button_state = GPIO.input(18)
+        while (ganchoON and button_state):
+
+            button_state = GPIO.input(18)
+            self.amspi.run_dc_motor(self.amspi.DC_Motor_2, clockwise=direccion)
