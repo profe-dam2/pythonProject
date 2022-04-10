@@ -26,7 +26,7 @@ class ControlGrua(object):
 
     def prueba(self):
         sensor = GPIO.input(23)
-        while(True and sensor):
+        while(True and not sensor):
             sensor = GPIO.input(23)
             print("HOLA")
 
