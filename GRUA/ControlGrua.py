@@ -20,7 +20,7 @@ class ControlGrua(object):
         self.amspi.set_L293D_pins(5, 6, 13, 19)
 
         carroON = False
-        print('INICIAL CONTROL GRUPA')
+        print('INICIAL CONTROL GRUA')
         self.prueba()
 
 
