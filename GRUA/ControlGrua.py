@@ -19,7 +19,7 @@ class ControlGrua(object):
         self.amspi.set_74HC595_pins(21, 20, 16)
         # Set PINs for controlling all 4 motors (GPIO numbering)
         self.amspi.set_L293D_pins(5, 6, 13, 19)
-
+        ganchoON = False
         carroON = False
         print('INICIAL CONTROL GRUA')
         #self.prueba()
