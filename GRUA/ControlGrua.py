@@ -24,14 +24,17 @@ class ControlGrua(object):
         ganchoON = False
         carroON = False
         print('INICIAL CONTROL GRUA')
-        #self.prueba()
+        self.prueba()
 
 
     def prueba(self):
         sensor = GPIO.input(23)
-        while(True and not sensor):
+        c = 0
+        while(True):
             sensor = GPIO.input(23)
-            print("HOLA")
+            if (sensor):
+                c = c + 1
+                print("CONTADOR",c)
 
 
     def moverCarroGrua(self, direccion):
