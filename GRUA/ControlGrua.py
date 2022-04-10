@@ -21,10 +21,10 @@ class ControlGrua(object):
 
         carroON = False
         self.prueba()
-
+        print('INICIAL CONTROL GRUPA')
 
     def prueba(self):
-        while(GPIO.input(23)):
+        while(True and GPIO.input(23)):
             print("HOLA")
 
 
