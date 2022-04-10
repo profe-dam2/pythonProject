@@ -12,5 +12,6 @@ def carro():
 
 
 if __name__ == '__main__':
+    ControlGrua()
     app.run(debug=True, port=8071, host='0.0.0.0')
 
