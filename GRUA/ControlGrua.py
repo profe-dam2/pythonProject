@@ -66,7 +66,7 @@ class ControlGrua(object):
     ####################################################
     ############GANCHO#################################
 
-    def moverCanchoGrua(self, direccion):
+    def moverGanchoGrua(self, direccion):
         global ganchoON
         if direccion != None:
             print(direccion)
