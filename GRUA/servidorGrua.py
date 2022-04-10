@@ -11,7 +11,7 @@ def carro():
     return {'response': 'moviendo carro grua'}
 
 @app.route('/ganchoGrua', methods=['POST'])
-def carro():
+def gancho():
     d = request.json['direccion']
     ControlGrua().moverGanchoGrua(d)
     return {'response': 'moviendo carro grua'}
