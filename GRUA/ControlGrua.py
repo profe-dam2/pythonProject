@@ -20,6 +20,7 @@ class ControlGrua(object):
         self.amspi.set_L293D_pins(5, 6, 13, 19)
 
         carroON = False
+        self.prueba()
 
 
     def prueba(self):
