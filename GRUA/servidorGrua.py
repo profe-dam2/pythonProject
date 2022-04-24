@@ -6,12 +6,16 @@ app = Flask(__name__)
 
 @app.route('/carroGrua', methods=['POST'])
 def carro():
+    print("CARRO GRUA")
+    print(request.json)
     d = request.json['direccion']
     ControlGrua().moverCarroGrua(d)
     return {'response': 'moviendo carro grua'}
 
 @app.route('/ganchoGrua', methods=['POST'])
 def gancho():
+    print("GANCHO GRUA")
+    print(request.json)
     d = request.json['direccion']
     ControlGrua().moverGanchoGrua(d)
     return {'response': 'moviendo carro grua'}
