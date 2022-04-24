@@ -107,7 +107,7 @@ class ControlGrua(object):
         while (ganchoON):
             inductivo_state = GPIO.input(4)
             print(inductivo_state)
-            if inductivo_state:
+            if inductivo_state == 1:
                 self.pararGanchoGrua()
                 break
 
