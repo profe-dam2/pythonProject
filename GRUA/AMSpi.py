@@ -224,6 +224,8 @@ class AMSpi:
             return False
 
         all_motors_direction, direction_value = self._get_motors_direction(dc_motor, int(not clockwise))
+        print(all_motors_direction)
+        print(direction_value)
 
         # set motors direction
         self._shift_write(all_motors_direction)
