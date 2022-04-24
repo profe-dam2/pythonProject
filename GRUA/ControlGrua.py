@@ -20,7 +20,9 @@ class ControlGrua(object):
         #INDUCTIVO GANCHO
         GPIO.setup(4, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-        GPIO.setup(18, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+        #TACOMETRO
+        GPIO.setup(14, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+
         GPIO.setup(23, GPIO.IN, pull_up_down = GPIO.PUD_UP)
         # Set PINs for controlling shift register (GPIO numbering)
         self.amspi.set_74HC595_pins(21, 20, 16)
@@ -103,13 +105,18 @@ class ControlGrua(object):
         global ganchoON
         inductivo_state = GPIO.input(4)
         self.amspi.run_dc_motor(self.amspi.DC_Motor_1, clockwise=direccion,
-                                speed=99)
+                               speed=99)
+        c = 0
         while (ganchoON):
             inductivo_state = GPIO.input(4)
-            print(inductivo_state)
+            sensor = GPIO.input(14)
+            if (sensor):
+                c = c + 1
+                print("CONTADOR", c)
             if inductivo_state == 1:
                 self.pararGanchoGrua()
                 break
+
 
 
     ####################################################
