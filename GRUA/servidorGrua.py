@@ -18,7 +18,16 @@ def gancho():
     print(request.json)
     d = request.json['direccion']
     ControlGrua().moverGanchoGrua(d)
-    return {'response': 'moviendo carro grua'}
+    return {'response': 'moviendo gancho grua'}
+
+
+@app.route('/plumaGrua', methods=['POST'])
+def pluma():
+    print("PLUMA GRUA")
+    print(request.json)
+    d = request.json['direccion']
+    ControlGrua().moverPlumaGrua(d)
+    return {'response': 'moviendo pluma grua'}
 
 if __name__ == '__main__':
     #ControlGrua()

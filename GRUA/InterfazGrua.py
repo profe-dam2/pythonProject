@@ -135,6 +135,64 @@ class BotonGanchoParar(Button):
 
 
 
+class BotonPlumaAbajo(Button):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.background_normal = 'imagenes/ledOFF.png'
+        self.background_down = 'imagenes/ledGRIS.png'
+        self.border = (0, 0, 0, 0)
+        self.size_hint = (.1, .2)
+        self.pos_hint = {'center_x': .25, 'center_y': .25}
+        self.on = False
+
+    def on_press(self):
+
+        data = {'direccion': False}
+
+        x = requests.post(url + '/plumaGrua',
+                              data=json.dumps(data),
+                              headers={"Content-Type": "application/json"})
+        print(x)
+
+
+class BotonPlumaArriba(Button):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.background_normal = 'imagenes/ledAMARILLO.png'
+        self.background_down = 'imagenes/ledGRIS.png'
+        self.border = (0, 0, 0, 0)
+        self.size_hint = (.1, .2)
+        self.pos_hint = {'center_x': .5, 'center_y': .25}
+        self.on = False
+
+    def on_press(self):
+        data = {'direccion': True}
+
+        x = requests.post(url + '/plumaGrua',
+                          data=json.dumps(data),
+                          headers={"Content-Type": "application/json"})
+        print(x)
+
+
+class BotonPlumaParar(Button):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.background_normal = 'imagenes/ledON.png'
+        self.background_down = 'imagenes/ledGRIS.png'
+        self.border = (0, 0, 0, 0)
+        self.size_hint = (.1, .2)
+        self.pos_hint = {'center_x': .75, 'center_y': .75}
+        self.on = False
+
+    def on_press(self):
+        data = {'direccion': None}
+
+        x = requests.post(url + '/plumaGrua',
+                          data=json.dumps(data),
+                          headers={"Content-Type": "application/json"})
+        print(x)
+
+
 
 
 class Screen2(Screen):
