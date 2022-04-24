@@ -102,10 +102,12 @@ class ControlGrua(object):
     def tareaMoverGancho(self, direccion):
         global ganchoON
         inductivo_state = GPIO.input(4)
+        self.amspi.run_dc_motor(self.amspi.DC_Motor_1, clockwise=direccion,
+                                speed=99)
         while (ganchoON and not inductivo_state):
             inductivo_state = GPIO.input(4)
             print(inductivo_state)
-            self.amspi.run_dc_motor(self.amspi.DC_Motor_1, clockwise=direccion, speed=99)
+
 
     ####################################################
     ############PLUMA#################################
