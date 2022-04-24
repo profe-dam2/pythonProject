@@ -24,7 +24,7 @@ class ControlGrua(object):
         ganchoON = False
         carroON = False
         print('INICIAL CONTROL GRUA')
-        self.prueba()
+        #self.prueba()
 
 
     def prueba(self):
