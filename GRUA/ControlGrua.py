@@ -70,7 +70,6 @@ class ControlGrua(object):
         global carroOn
         button_state = GPIO.input(18)
         while (carroON and button_state):
-            print("CARRO MOVIENDO")
             button_state = GPIO.input(18)
             self.amspi.run_dc_motor(self.amspi.DC_Motor_3, clockwise=direccion, speed=70)
 
@@ -105,6 +104,7 @@ class ControlGrua(object):
         inductivo_state = GPIO.input(4)
         while (ganchoON and not inductivo_state):
             inductivo_state = GPIO.input(4)
+            print(inductivo_state)
             self.amspi.run_dc_motor(self.amspi.DC_Motor_1, clockwise=direccion, speed=99)
 
     ####################################################
@@ -139,4 +139,4 @@ class ControlGrua(object):
         while (plumaON):
             #button_state = GPIO.input(18)
             self.amspi.run_dc_motor(self.amspi.DC_Motor_2,
-                                    clockwise=direccion, speed=80)
+                                    clockwise=direccion, speed=100)
