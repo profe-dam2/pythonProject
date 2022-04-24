@@ -181,7 +181,7 @@ class BotonPlumaParar(Button):
         self.background_down = 'imagenes/ledGRIS.png'
         self.border = (0, 0, 0, 0)
         self.size_hint = (.1, .2)
-        self.pos_hint = {'center_x': .75, 'center_y': .75}
+        self.pos_hint = {'center_x': .75, 'center_y': .25}
         self.on = False
 
     def on_press(self):
@@ -230,6 +230,10 @@ class Screen2(Screen):
         self.add_widget(BotonGanchoAbajo())
         self.add_widget(BotonGanchoArriba())
         self.add_widget(BotonGanchoParar())
+
+        self.add_widget(BotonPlumaAbajo())
+        self.add_widget(BotonPlumaArriba())
+        self.add_widget(BotonPlumaParar())
 
 class Proyecto2App(App):
     def build(self):

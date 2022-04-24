@@ -9,7 +9,7 @@ def carro():
     print("CARRO GRUA")
     print(request.json)
     d = request.json['direccion']
-    ControlGrua().moverCarroGrua(d)
+    cg.moverCarroGrua(d)
     return {'response': 'moviendo carro grua'}
 
 @app.route('/ganchoGrua', methods=['POST'])
@@ -17,7 +17,7 @@ def gancho():
     print("GANCHO GRUA")
     print(request.json)
     d = request.json['direccion']
-    ControlGrua().moverGanchoGrua(d)
+    cg.moverGanchoGrua(d)
     return {'response': 'moviendo gancho grua'}
 
 
@@ -26,10 +26,10 @@ def pluma():
     print("PLUMA GRUA")
     print(request.json)
     d = request.json['direccion']
-    ControlGrua().moverPlumaGrua(d)
+    cg.moverPlumaGrua(d)
     return {'response': 'moviendo pluma grua'}
 
 if __name__ == '__main__':
-    #ControlGrua()
+    cg = ControlGrua()
     app.run(debug=True, port=8071, host='0.0.0.0')
 
