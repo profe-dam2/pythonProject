@@ -3,7 +3,8 @@ from ControlGrua import *
 from flask import Flask, request
 app = Flask(__name__)
 
-@app.route('/ganchoGrua', methods=['POST'])
+
+@app.route('/carroGrua', methods=['POST'])
 def carro():
     print("CARRO GRUA")
     print(request.json)
@@ -11,7 +12,7 @@ def carro():
     ControlGrua().moverCarroGrua(d)
     return {'response': 'moviendo carro grua'}
 
-@app.route('/carroGrua', methods=['POST'])
+@app.route('/ganchoGrua', methods=['POST'])
 def gancho():
     print("GANCHO GRUA")
     print(request.json)
