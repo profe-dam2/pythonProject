@@ -100,4 +100,4 @@ class ControlGrua(object):
         while (ganchoON and button_state):
 
             button_state = GPIO.input(18)
-            self.amspi.run_dc_motor(self.amspi.DC_Motor_1, clockwise=direccion)
+            self.amspi.run_dc_motor(self.amspi.DC_Motor_1, clockwise=direccion, speed=99)
