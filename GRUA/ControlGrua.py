@@ -43,7 +43,7 @@ class ControlGrua(object):
         if direccion != None:
             print(direccion)
             if (carroON):
-                self.amspi.stop_dc_motor(self.amspi.DC_Motor_3)
+                self.amspi.stop_dc_motor(self.amspi.DC_Motor_2)
                 sleep(.2)
             carroON = True
             thread = Thread(target=self.tareaMoverCarro, args=(direccion,))
@@ -55,9 +55,9 @@ class ControlGrua(object):
     def pararCarroGrua(self):
         global carroON
         print('parar el carro')
-        self.amspi.stop_dc_motor(self.amspi.DC_Motor_3)
+        self.amspi.stop_dc_motor(self.amspi.DC_Motor_2)
         sleep(.2)
-        self.amspi.stop_dc_motor(self.amspi.DC_Motor_3)
+        self.amspi.stop_dc_motor(self.amspi.DC_Motor_2)
         carroON = False
 
     def tareaMoverCarro(self, direccion):
@@ -66,7 +66,7 @@ class ControlGrua(object):
         while (carroON and button_state):
             print("CARRO MOVIENDO")
             button_state = GPIO.input(18)
-            self.amspi.run_dc_motor(self.amspi.DC_Motor_3, clockwise=direccion)
+            self.amspi.run_dc_motor(self.amspi.DC_Motor_2, clockwise=direccion)
 
 
     ####################################################
