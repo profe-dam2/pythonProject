@@ -108,14 +108,14 @@ class ControlGrua(object):
                                speed=99)
         c = 0
         while (ganchoON):
-            inductivo_state = GPIO.input(4)
+            #inductivo_state = GPIO.input(4)
             sensor = GPIO.input(14)
             if (sensor):
                 c = c + 1
                 print("CONTADOR", c)
-            if inductivo_state == 1:
-                self.pararGanchoGrua()
-                break
+            # if inductivo_state == 1:
+            #     self.pararGanchoGrua()
+            #     break
 
 
 
