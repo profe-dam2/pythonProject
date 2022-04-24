@@ -49,7 +49,7 @@ class ControlGrua(object):
         if direccion != None:
             print(direccion)
             if (carroON):
-                self.amspi.stop_dc_motor(self.amspi.DC_Motor_1)
+                self.amspi.stop_dc_motor(self.amspi.DC_Motor_3)
                 sleep(.2)
             carroON = True
             thread = Thread(target=self.tareaMoverCarro, args=(direccion,))
@@ -61,9 +61,9 @@ class ControlGrua(object):
     def pararCarroGrua(self):
         global carroON
         print('parar el carro')
-        self.amspi.stop_dc_motor(self.amspi.DC_Motor_1)
+        self.amspi.stop_dc_motor(self.amspi.DC_Motor_3)
         sleep(.2)
-        self.amspi.stop_dc_motor(self.amspi.DC_Motor_1)
+        self.amspi.stop_dc_motor(self.amspi.DC_Motor_3)
         carroON = False
 
     def tareaMoverCarro(self, direccion):
@@ -72,7 +72,7 @@ class ControlGrua(object):
         while (carroON and button_state):
             print("CARRO MOVIENDO")
             button_state = GPIO.input(18)
-            self.amspi.run_dc_motor(self.amspi.DC_Motor_1, clockwise=direccion, speed=70)
+            self.amspi.run_dc_motor(self.amspi.DC_Motor_3, clockwise=direccion, speed=70)
 
 
     ####################################################
@@ -83,7 +83,7 @@ class ControlGrua(object):
         if direccion != None:
             print(direccion)
             if (ganchoON):
-                self.amspi.stop_dc_motor(self.amspi.DC_Motor_2)
+                self.amspi.stop_dc_motor(self.amspi.DC_Motor_1)
 
             ganchoON = True
             thread = Thread(target=self.tareaMoverGancho, args=(direccion,))
@@ -95,17 +95,17 @@ class ControlGrua(object):
     def pararGanchoGrua(self):
         global ganchoON
         print('parar el gancho')
-        self.amspi.stop_dc_motor(self.amspi.DC_Motor_2)
+        self.amspi.stop_dc_motor(self.amspi.DC_Motor_1)
         sleep(.2)
-        self.amspi.stop_dc_motor(self.amspi.DC_Motor_2)
+        self.amspi.stop_dc_motor(self.amspi.DC_Motor_1)
         ganchoON = False
 
     def tareaMoverGancho(self, direccion):
         global ganchoON
         inductivo_state = GPIO.input(4)
-        while (ganchoON and inductivo_state):
+        while (ganchoON and not inductivo_state):
             inductivo_state = GPIO.input(4)
-            self.amspi.run_dc_motor(self.amspi.DC_Motor_2, clockwise=direccion, speed=99)
+            self.amspi.run_dc_motor(self.amspi.DC_Motor_1, clockwise=direccion, speed=99)
 
     ####################################################
     ############PLUMA#################################
@@ -115,7 +115,7 @@ class ControlGrua(object):
         if direccion != None:
             print(direccion)
             if (plumaON):
-                self.amspi.stop_dc_motor(self.amspi.DC_Motor_3)
+                self.amspi.stop_dc_motor(self.amspi.DC_Motor_2)
 
             plumaON = True
             thread = Thread(target=self.tareaMoverPluma,
@@ -128,9 +128,9 @@ class ControlGrua(object):
     def pararPlumaGrua(self):
         global plumaON
         print('parar la pluma')
-        self.amspi.stop_dc_motor(self.amspi.DC_Motor_3)
+        self.amspi.stop_dc_motor(self.amspi.DC_Motor_2)
         sleep(.2)
-        self.amspi.stop_dc_motor(self.amspi.DC_Motor_3)
+        self.amspi.stop_dc_motor(self.amspi.DC_Motor_2)
         plumaON = False
 
     def tareaMoverPluma(self, direccion):
@@ -138,5 +138,5 @@ class ControlGrua(object):
         #button_state = GPIO.input(18)
         while (plumaON):
             #button_state = GPIO.input(18)
-            self.amspi.run_dc_motor(self.amspi.DC_Motor_3,
-                                    clockwise=direccion, speed=99)
+            self.amspi.run_dc_motor(self.amspi.DC_Motor_2,
+                                    clockwise=direccion, speed=80)
