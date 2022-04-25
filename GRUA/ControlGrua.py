@@ -87,6 +87,7 @@ class ControlGrua(object):
         while (carroON and not fcC1 and not fcC2):
             fcC1 = GPIO.input(9)
             fcC2 = GPIO.input(10)
+            print("MUEVE CARRO")
             if fcC1 == 1 or fcC2 == 1:
                 self.pararCarroGrua()
                 break
