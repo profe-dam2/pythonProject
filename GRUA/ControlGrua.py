@@ -84,7 +84,7 @@ class ControlGrua(object):
         #
         fcC1 = GPIO.input(9)
         fcC2 = GPIO.input(10)
-        while (carroON and not fcC1 and not fcC2):
+        while (carroON and fcC1 and fcC2):
             fcC1 = GPIO.input(9)
             fcC2 = GPIO.input(10)
             print("MUEVE CARRO")
