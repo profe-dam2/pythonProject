@@ -107,8 +107,8 @@ class ControlGrua(object):
         self.amspi.run_dc_motor(self.amspi.DC_Motor_1, clockwise=direccion,
                                speed=99)
         c = 0
-        while (ganchoON):
-            #inductivo_state = GPIO.input(4)
+        while (ganchoON and not inductivo_state):
+            inductivo_state = GPIO.input(4)
             sensor = GPIO.input(14)
             if (sensor):
                 c = c + 1
