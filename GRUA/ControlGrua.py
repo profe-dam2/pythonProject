@@ -23,6 +23,12 @@ class ControlGrua(object):
         #TACOMETRO
         GPIO.setup(14, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 
+        #FINALES DE CARRERA CARRO
+        GPIO.setup(9, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+
+
+
         GPIO.setup(23, GPIO.IN, pull_up_down = GPIO.PUD_UP)
         # Set PINs for controlling shift register (GPIO numbering)
         self.amspi.set_74HC595_pins(21, 20, 16)
@@ -76,6 +82,14 @@ class ControlGrua(object):
         # while (carroON and button_state):
         #     button_state = GPIO.input(18)
         #
+        fcC1 = GPIO.input(9)
+        fcC2 = GPIO.input(10)
+        while (carroON and not fcC1 and not fcC2):
+            fcC1 = GPIO.input(9)
+            fcC2 = GPIO.input(10)
+            if fcC1 == 1 or fcC2 == 1:
+                self.pararCarroGrua()
+                break
 
 
     ####################################################
