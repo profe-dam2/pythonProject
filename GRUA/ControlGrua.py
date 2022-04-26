@@ -89,7 +89,7 @@ class ControlGrua(object):
             print("NO TE PUEDES MOVER, FCC2 ESTA ACTIVADO")
         else:
             self.amspi.run_dc_motor(self.amspi.DC_Motor_3, clockwise=direccion,
-                                    speed=60)
+                                    speed=50)
             sleep(1)
             while (carroON):
                 fcC1 = GPIO.input(9)
