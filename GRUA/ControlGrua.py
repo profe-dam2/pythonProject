@@ -84,13 +84,18 @@ class ControlGrua(object):
         #
         fcC1 = GPIO.input(9)
         fcC2 = GPIO.input(10)
-        while (carroON and fcC1 and fcC2):
-            fcC1 = GPIO.input(9)
-            fcC2 = GPIO.input(10)
-            print("MUEVE CARRO")
-            if fcC1 == 0 or fcC2 == 0:
-                self.pararCarroGrua()
-                break
+        if fcC1 == 0:
+            print("NO TE PUEDES MOVER, FCC1 ESTA ACTIVADO")
+        elif fcC2 == 0:
+            print("NO TE PUEDES MOVER, FCC2 ESTA ACTIVADO")
+        else:
+            while (carroON and fcC1 and fcC2):
+                fcC1 = GPIO.input(9)
+                fcC2 = GPIO.input(10)
+                print("MUEVE CARRO")
+                if fcC1 == 0 or fcC2 == 0:
+                    self.pararCarroGrua()
+                    break
 
 
     ####################################################
