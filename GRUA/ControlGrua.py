@@ -90,7 +90,7 @@ class ControlGrua(object):
         else:
             self.amspi.run_dc_motor(self.amspi.DC_Motor_3, clockwise=direccion,
                                     speed=70)
-            while (carroON and fcC1 == 1 and fcC2 == 1):
+            while (carroON):
                 fcC1 = GPIO.input(9)
                 fcC2 = GPIO.input(10)
                 print("MUEVE CARRO")
