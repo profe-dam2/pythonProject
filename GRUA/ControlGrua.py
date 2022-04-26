@@ -83,9 +83,9 @@ class ControlGrua(object):
         #
         fcC1 = GPIO.input(9)
         fcC2 = GPIO.input(10)
-        if fcC1 == 0:
+        if fcC1 == 0 and not direccion:
             print("NO TE PUEDES MOVER, FCC1 ESTA ACTIVADO")
-        elif fcC2 == 0:
+        elif fcC2 == 0 and direccion:
             print("NO TE PUEDES MOVER, FCC2 ESTA ACTIVADO")
         else:
             self.amspi.run_dc_motor(self.amspi.DC_Motor_3, clockwise=direccion,
