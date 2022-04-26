@@ -77,8 +77,7 @@ class ControlGrua(object):
     def tareaMoverCarro(self, direccion):
         global carroOn
         #button_state = GPIO.input(18)
-        self.amspi.run_dc_motor(self.amspi.DC_Motor_3, clockwise=direccion,
-                                speed=70)
+
         # while (carroON and button_state):
         #     button_state = GPIO.input(18)
         #
@@ -89,6 +88,8 @@ class ControlGrua(object):
         elif fcC2 == 0:
             print("NO TE PUEDES MOVER, FCC2 ESTA ACTIVADO")
         else:
+            self.amspi.run_dc_motor(self.amspi.DC_Motor_3, clockwise=direccion,
+                                    speed=70)
             while (carroON and fcC1 and fcC2):
                 fcC1 = GPIO.input(9)
                 fcC2 = GPIO.input(10)
