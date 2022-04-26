@@ -172,7 +172,8 @@ class ControlGrua(object):
     def tareaMoverPluma(self, direccion):
         global plumaON
         #button_state = GPIO.input(18)
-        while (plumaON):
+
+        self.amspi.run_dc_motor(self.amspi.DC_Motor_2,
+                                clockwise=direccion, speed=100)
+        #while (plumaON):
             #button_state = GPIO.input(18)
-            self.amspi.run_dc_motor(self.amspi.DC_Motor_2,
-                                    clockwise=direccion, speed=100)
