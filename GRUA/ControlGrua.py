@@ -191,5 +191,5 @@ class ControlGrua(object):
                 fcP2 = GPIO.input(27)
 
                 if fcP1 == 0 or fcP2 == 0:
-                    self.pararCarroGrua()
+                    self.pararPlumaGrua()
                     break
