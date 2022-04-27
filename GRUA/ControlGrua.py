@@ -184,7 +184,7 @@ class ControlGrua(object):
             print("NO TE PUEDES MOVER, FCP2 ESTA ACTIVADO")
         else:
             self.amspi.run_dc_motor(self.amspi.DC_Motor_2, clockwise=direccion,
-                                    speed=80)
+                                    speed=100)
             sleep(1)
             while (plumaON):
                 fcP1 = GPIO.input(17)
