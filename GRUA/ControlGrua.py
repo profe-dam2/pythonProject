@@ -190,6 +190,6 @@ class ControlGrua(object):
                 fcP1 = GPIO.input(17)
                 fcP2 = GPIO.input(27)
 
-                if fcP1 == 0 or fcP1 == 0:
+                if fcP1 == 0 or fcP2 == 0:
                     self.pararCarroGrua()
                     break
