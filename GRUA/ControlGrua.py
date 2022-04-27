@@ -185,7 +185,7 @@ class ControlGrua(object):
         else:
             self.amspi.run_dc_motor(self.amspi.DC_Motor_2, clockwise=direccion,
                                     speed=100)
-            sleep(1)
+            sleep(2)
             while (plumaON):
                 fcP1 = GPIO.input(17)
                 fcP2 = GPIO.input(27)
