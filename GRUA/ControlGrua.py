@@ -27,6 +27,10 @@ class ControlGrua(object):
         GPIO.setup(9, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
+        # FINALES DE CARRERA PLUMA
+        GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.setup(27, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+
 
 
         GPIO.setup(23, GPIO.IN, pull_up_down = GPIO.PUD_UP)
@@ -171,9 +175,21 @@ class ControlGrua(object):
 
     def tareaMoverPluma(self, direccion):
         global plumaON
-        #button_state = GPIO.input(18)
 
-        self.amspi.run_dc_motor(self.amspi.DC_Motor_2,
-                                clockwise=direccion, speed=100)
-        #while (plumaON):
-            #button_state = GPIO.input(18)
+        fcP1 = GPIO.input(17)
+        fcP2 = GPIO.input(27)
+        if fcP1 == 0 and not direccion:
+            print("NO TE PUEDES MOVER, FCP1 ESTA ACTIVADO")
+        elif fcP2 == 0 and direccion:
+            print("NO TE PUEDES MOVER, FCP2 ESTA ACTIVADO")
+        else:
+            self.amspi.run_dc_motor(self.amspi.DC_Motor_2, clockwise=direccion,
+                                    speed=80)
+            sleep(1)
+            while (plumaON):
+                fcP1 = GPIO.input(17)
+                fcP2 = GPIO.input(27)
+
+                if fcP1 == 0 or fcP1 == 0:
+                    self.pararCarroGrua()
+                    break
