@@ -136,6 +136,7 @@ class ControlGrua(object):
         sleep(.2)
         self.amspi.stop_dc_motor(self.amspi.DC_Motor_1)
         ganchoON = False
+        GPIO.output(23, 0)
 
     def tareaMoverGancho(self, direccion):
         global ganchoON
@@ -143,6 +144,7 @@ class ControlGrua(object):
         self.amspi.run_dc_motor(self.amspi.DC_Motor_1, clockwise=direccion,
                                speed=99)
         c = 0
+        GPIO.output(23,1)
         while (ganchoON and not inductivo_state):
             inductivo_state = GPIO.input(4)
             sensor = GPIO.input(14)
