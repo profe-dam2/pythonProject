@@ -33,13 +33,13 @@ class ControlGrua(object):
 
 
         #LED VERDE
-        GPIO.setup(23, GPIO.OUT, pull_up_down = GPIO.PUD_UP)
+        GPIO.setup(23, GPIO.OUT)
 
         # LED ROJO
-        GPIO.setup(24, GPIO.OUT, pull_up_down=GPIO.PUD_UP)
+        GPIO.setup(24, GPIO.OUT)
 
         # RELE
-        GPIO.setup(10, GPIO.OUT, pull_up_down=GPIO.PUD_UP)
+        GPIO.setup(10, GPIO.OUT)
 
 
         # Set PINs for controlling shift register (GPIO numbering)
