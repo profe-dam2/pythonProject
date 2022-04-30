@@ -23,11 +23,11 @@ class ControlGrua(object):
         #TACOMETRO
         GPIO.setup(14, GPIO.IN, pull_up_down = GPIO.PUD_UP)
 
-        #FINALES DE CARRERA CARRO
-        GPIO.setup(9, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        #FINALES DE CARRERA PLUMA
+        GPIO.setup(15, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-        # FINALES DE CARRERA PLUMA
+        # FINALES DE CARRERA CARRO
         GPIO.setup(27, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
