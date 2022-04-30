@@ -40,7 +40,7 @@ class ControlGrua(object):
 
         # RELE
         GPIO.setup(10, GPIO.OUT)
-
+        GPIO.output(10, 1)
 
 
         # Set PINs for controlling shift register (GPIO numbering)
@@ -139,7 +139,7 @@ class ControlGrua(object):
         ganchoON = False
         GPIO.output(23, 0)
         GPIO.output(24, 1)
-        GPIO.output(10, 0)
+        GPIO.output(10, 1)
 
     def tareaMoverGancho(self, direccion):
         global ganchoON
@@ -150,7 +150,7 @@ class ControlGrua(object):
 
 
         GPIO.output(23,1)
-        GPIO.output(10, 1)
+        GPIO.output(10, 0)
         while (ganchoON and not inductivo_state):
             inductivo_state = GPIO.input(4)
             sensor = GPIO.input(14)
