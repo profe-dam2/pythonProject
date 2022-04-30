@@ -28,12 +28,20 @@ class ControlGrua(object):
         GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
         # FINALES DE CARRERA PLUMA
-        GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP)
         GPIO.setup(27, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.setup(22, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 
+        #LED VERDE
+        GPIO.setup(23, GPIO.OUT, pull_up_down = GPIO.PUD_UP)
 
-        GPIO.setup(23, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+        # LED ROJO
+        GPIO.setup(24, GPIO.OUT, pull_up_down=GPIO.PUD_UP)
+
+        # RELE
+        GPIO.setup(10, GPIO.OUT, pull_up_down=GPIO.PUD_UP)
+
+
         # Set PINs for controlling shift register (GPIO numbering)
         self.amspi.set_74HC595_pins(21, 20, 16)
         # Set PINs for controlling all 4 motors (GPIO numbering)
@@ -85,8 +93,8 @@ class ControlGrua(object):
         # while (carroON and button_state):
         #     button_state = GPIO.input(18)
         #
-        fcC1 = GPIO.input(9)
-        fcC2 = GPIO.input(10)
+        fcC1 = GPIO.input(27)
+        fcC2 = GPIO.input(22)
         if fcC1 == 0 and not direccion:
             print("NO TE PUEDES MOVER, FCC1 ESTA ACTIVADO")
         elif fcC2 == 0 and direccion:
@@ -96,8 +104,8 @@ class ControlGrua(object):
                                     speed=40)
             sleep(1)
             while (carroON):
-                fcC1 = GPIO.input(9)
-                fcC2 = GPIO.input(10)
+                fcC1 = GPIO.input(27)
+                fcC2 = GPIO.input(22)
                 print("MUEVE CARRO")
                 if fcC1 == 0 or fcC2 == 0:
                     self.pararCarroGrua()
@@ -176,8 +184,8 @@ class ControlGrua(object):
     def tareaMoverPluma(self, direccion):
         global plumaON
 
-        fcP1 = GPIO.input(17)
-        fcP2 = GPIO.input(27)
+        fcP1 = GPIO.input(15)
+        fcP2 = GPIO.input(17)
         if fcP1 == 0 and not direccion:
             print("NO TE PUEDES MOVER, FCP1 ESTA ACTIVADO")
         elif fcP2 == 0 and direccion:
@@ -187,8 +195,8 @@ class ControlGrua(object):
                                     speed=80)
             sleep(2)
             while (plumaON):
-                fcP1 = GPIO.input(17)
-                fcP2 = GPIO.input(27)
+                fcP1 = GPIO.input(15)
+                fcP2 = GPIO.input(17)
 
                 if fcP1 == 0 or fcP2 == 0:
                     self.pararPlumaGrua()
