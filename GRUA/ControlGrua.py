@@ -40,6 +40,7 @@ class ControlGrua(object):
 
         # RELE
         GPIO.setup(10, GPIO.OUT)
+        GPIO.cleanup()
 
 
         # Set PINs for controlling shift register (GPIO numbering)
